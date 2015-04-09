@@ -1,0 +1,65 @@
+import java.io.IOException;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Coop extends Apt {
+
+	private double mortgage;
+	private double maintenance;
+
+	// no argument constructor
+	public Coop() {
+	}
+
+	// Coop constrictor calls Apartment constructor sets Apartments fields
+	public Coop(String o, int n, int s, double e, double m) {
+
+		super(o, n, s);
+
+		mortgage = e;
+
+		maintenance = m;
+	}
+
+	// user defined toString for Coop calls Apartment toString
+	public String toString() {
+		// sets decimal format for dollar amounts of maintenance and mortgage
+		DecimalFormat f = new DecimalFormat("0.00");
+
+		return (super.toString() + "\nMortgage cost is" + "$"
+				+ f.format(mortgage) + "\nMaintenance cost is" + 
+				"$" + f.format(maintenance));
+
+	}
+
+	// Coop read method call Apartment read method
+	public void readCoop(Scanner scan) throws IOException {
+
+		// read data for field of apartment
+		readApt(scan);
+
+		// read data for fields of Coop
+		double g = 0;
+
+		double h = 0;
+
+		if (scan.hasNext()) {
+
+			// Reads data from file
+			g = scan.nextDouble();
+
+			h = scan.nextDouble();
+
+			if (scan.hasNext())
+
+				scan.nextLine();
+
+			mortgage = g;
+
+			maintenance = h;
+
+		}
+
+	}
+
+} // coop class
