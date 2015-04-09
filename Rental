@@ -1,0 +1,63 @@
+import java.io.IOException;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Rental extends Apt {
+
+	private double rentalCost;
+
+	// no argument constructor
+	public Rental() {
+
+	}
+
+	// Rental constructor calls apartment constructor sets Apartments fields
+	public Rental(String x, int y, int z, double t) {
+		super(x, y, z);
+		rentalCost = t;
+	}
+
+	// mutator for rental cost
+	public void setrentalCost(double s) {
+
+		rentalCost = s;
+	}
+
+	// accessor for rental cost
+	public double getrentalCost() {
+		return rentalCost;
+
+	}
+
+	// user defined toString for Rental calls Apartments toString
+	public String toString() {
+
+		DecimalFormat f = new DecimalFormat("0.00");
+
+		return (super.toString() + "\nRental Cost is" + "$" + 
+		f.format(rentalCost));
+
+	}
+
+	// Rental read method that call apartment read method
+	public void readRental(Scanner scan) throws IOException {
+
+		// read data for fields of apartment
+		readApt(scan);
+
+		// read data for fields of Rental
+		double o = 0;
+
+		if (scan.hasNext()) {
+
+			// Read data from file
+			o = scan.nextDouble();
+
+			if (scan.hasNext())
+				scan.nextLine();
+
+			rentalCost = o;
+		}
+
+	}
+} // rental class
