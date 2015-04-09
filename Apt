@@ -1,0 +1,52 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Apt {
+
+	private String occupant;
+	private int numRooms;
+	private int squareFeet;
+
+	// no argument constructor
+
+	public Apt() {
+
+	}
+    // constructor sets fields of Apartment
+	public Apt(String o, int n, int s) {
+		occupant = o;
+		numRooms = n;
+		squareFeet = s;
+
+	}
+
+    // User defined toString
+	public String toString() {
+		return ("The Occupants are" + occupant + "\nRooms are" + numRooms
+				+ "and the size is" + squareFeet);
+	}
+    // Reads text file into Apartment
+	public void readApt(Scanner scan) throws IOException {
+		String o = "";
+		int n = 0;
+		int s = 0;
+
+		if (scan.hasNext()) {
+            
+			// reads the data from the file
+			o = scan.nextLine();
+			n = scan.nextInt();
+			s = scan.nextInt();
+
+			if (scan.hasNext())
+
+				scan.nextLine();
+
+			occupant = o;
+			numRooms = n;
+			squareFeet = s;
+
+		}
+	}
+
+} // Apartment class
