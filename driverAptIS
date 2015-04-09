@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.Scanner;
+import java.io.IOException;
+
+public class driverAptIS {
+
+	public static void main(String[] args) throws IOException {
+		
+		// Open file
+		File file = new File("AptData.txt");
+		Scanner fileScan = new Scanner(file);
+		
+		// Declare an array for Coops and Rental
+		Rental[] Rents;
+		Coop[] Coops;
+		
+		// Size of arrays 
+		final int o = 2;
+		final int n = 2;
+		
+		Rents = new Rental[o];
+		Coops = new Coop[n];
+		
+		//Rental array
+		// for loop instanciate Rental 
+		for (int i = 0; i < o; i++) {
+			Rents[i] = new Rental();
+			Rents[i].readRental(fileScan);
+			
+		}
+		
+		// Display the rents using toString of rental
+		for (int i = 0; i < o; i++) {
+			System.out.println(Rents[i]);
+			System.out.println("===");
+		}
+		// for loop instanciate Coop
+		for (int i = 0; i < n; i++) {
+			Coops[i] = new Coop();
+			Coops[i].readCoop(fileScan);
+		}
+		// Display Coops using toString of Coop
+		for (int i = 0; i < n; i++) {
+			System.out.println(Coops[i]);
+	        System.out.println("===");
+		}
+
+	fileScan.close();	
+	} // main
+} // end
